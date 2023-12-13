@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { Checkbox } from "./ui/checkbox";
-import { Area } from "..";
+import { Action, Area } from "..";
 import { v4 } from "uuid";
 
 export default function Checkboxes({
@@ -8,7 +8,7 @@ export default function Checkboxes({
   dispatch,
 }: {
   areas: Area[];
-  dispatch: Dispatch<object>;
+  dispatch: Dispatch<Action>;
 }) {
   return (
     <div className="flex flex-col gap-3">

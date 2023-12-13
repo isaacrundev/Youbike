@@ -8,8 +8,9 @@ import {
 } from "./ui/select";
 import { cityData } from "@/data/data";
 import { v4 } from "uuid";
+import { Action } from "..";
 
-export default function Dropdown({ dispatch }: { dispatch: Dispatch<object> }) {
+export default function Dropdown({ dispatch }: { dispatch: Dispatch<Action> }) {
   return (
     <>
       <Select

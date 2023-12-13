@@ -1,15 +1,15 @@
-import { ChangeEvent, Dispatch, useState } from "react";
+import { ChangeEvent, Dispatch } from "react";
 import { Input } from "./ui/input";
 import closeIcon from "../assets/close_24px.png";
 import searchIcon from "../assets/search_24px.png";
-import { v4 } from "uuid";
+import { Action } from "..";
 
 export default function SearchInput({
   keywordsValue,
   dispatch,
 }: {
   keywordsValue: string;
-  dispatch: Dispatch<object>;
+  dispatch: Dispatch<Action>;
 }) {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({

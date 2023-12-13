@@ -8,7 +8,7 @@ import { Dispatch, useEffect, useReducer } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { cityData } from "./data/data";
-import { Area } from ".";
+import { Action, Area } from ".";
 import { initialState, reducer } from "./reducer/reducer";
 
 const getDataTaipei = async () => {
@@ -33,7 +33,7 @@ const App = () => {
   // });
   const [state, dispatch]: [
     state: typeof initialState,
-    dispatch: Dispatch<object>
+    dispatch: Dispatch<Action>
   ] = useReducer(reducer, initialState);
 
   useEffect(() => {

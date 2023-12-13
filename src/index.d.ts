@@ -19,17 +19,12 @@ type State = {
   keywords: string;
 };
 
-enum ActionType {
-  CHANGE_CITY = "CHANGE_CITY",
-  SET_AREA_CHECKBOXES = "SET_AREA_CHECKBOXES",
-  CHANGE_AREA_CHECKBOX = "CHANGE_AREA_CHECKBOX",
-  FILTER_BY_AREAS = "FILTER_BY_AREAS",
-  FILTER_BY_SPOT_NAMES = "FILTER_BY_SPOT_NAMES",
-}
+//
 
-type Action = {
-  type: ActionType;
-  payload: { city: string; areas: Area[]; each: Area };
-};
+type Action =
+  | { type: "CHANGE_CITY"; payload: { city: CityData } }
+  | { type: "SET_AREA_CHECKBOXES"; payload: { areas: Area[] } }
+  | { type: "CHANGE_AREA_CHECKBOX"; payload: { each: Area } }
+  | { type: "FILTER_BY_KEYWORDS"; payload: { keywords: string } };
 
 export { CityData, YouBikeData, State, Area, Action };

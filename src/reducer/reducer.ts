@@ -8,7 +8,7 @@ export const initialState: State = {
   keywords: "",
 };
 
-export const reducer = (state, action) => {
+export const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "CHANGE_CITY":
       return {
@@ -32,9 +32,7 @@ export const reducer = (state, action) => {
       };
     case "FILTER_BY_KEYWORDS":
       return { ...state, keywords: action.payload.keywords };
-    case "FILTER_BY_SPOT_NAMES":
-      return { ...state, rawData: action.payload };
     default:
-      throw new Error(`Action type ${action.type} not found`);
+      return state;
   }
 };
