@@ -8,7 +8,7 @@ import { Dispatch, useEffect, useReducer } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { cityData } from "./data/data";
-import { Action, Area } from ".";
+import { Action, Area, YouBikeData } from ".";
 import { initialState, reducer } from "./reducer/reducer";
 
 const getDataTaipei = async () => {
@@ -16,21 +16,23 @@ const getDataTaipei = async () => {
   return data;
 };
 
-const getDataTaoyuan = async () => {
-  const { data } = await axios(cityData[1].apiUrl);
-  console.log(data.result);
-  return data;
-};
+// const getDataTaoyuan = async () => {
+//   const { data } = await axios(cityData[1].apiUrl);
+//   console.log(data);
+//   return data;
+// };
 
 const App = () => {
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["Taipei"],
     queryFn: getDataTaipei,
   });
+
   // const { data } = useQuery({
   //   queryKey: ["Taoyuan"],
   //   queryFn: getDataTaoyuan,
   // });
+
   const [state, dispatch]: [
     state: typeof initialState,
     dispatch: Dispatch<Action>
@@ -42,6 +44,8 @@ const App = () => {
 
   useEffect(() => {
     let result: Area[] = [];
+    // let paginated: YouBikeData[][] = [];
+
     if (data) {
       for (const i of data) {
         if (!result.find((j) => j.name === i["sareaen"])) {
@@ -51,13 +55,21 @@ const App = () => {
           ];
         }
       }
+
+      // for (let i = 0; i < data.length; i += 30) {
+      //   paginated = [...paginated, data.slice(i, i + 30)];
+      // }
     }
     dispatch({ type: "SET_AREA_CHECKBOXES", payload: { areas: result } });
+    // dispatch({
+    //   type: "SET_PAGINATED_DATA",
+    //   payload: { paginatedData: paginated },
+    // });
   }, [data]);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state.paginatedData);
+  // });
 
   return (
     <>
@@ -81,7 +93,7 @@ const App = () => {
             height={172}
           />
         </div>
-        <DataTable data={data} state={state} />
+        <DataTable data={data} state={state} dispatch={dispatch} />
       </main>
     </>
   );

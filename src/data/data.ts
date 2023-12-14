@@ -7,10 +7,10 @@ export const cityData: CityData[] = [
     apiUrl:
       "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json",
   },
-  {
-    name: "Taoyuan",
-    nameCn: "桃園市",
-    apiUrl:
-      "https://data.tycg.gov.tw/api/v1/rest/datastore/a1b4714b-3b75-4ff8-a8f2-cc377e4eaa0f?format=json",
-  },
+  // {
+  //   name: "Taoyuan",
+  //   nameCn: "桃園市",
+  //   apiUrl:
+  //     "https://data.tycg.gov.tw/opendata/datalist/datasetMeta/download?id=5ca2bfc7-9ace-4719-88ae-4034b9a5a55c&rid=a1b4714b-3b75-4ff8-a8f2-cc377e4eaa0f",
+  // },
 ];
