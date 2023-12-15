@@ -4,12 +4,13 @@ import Header from "./components/Header";
 import SearchInput from "./components/SearchInput";
 import bikes from "./assets/Frame.png";
 import DataTable from "./components/DataTable";
-import { Dispatch, useEffect, useReducer } from "react";
+import { Dispatch, useEffect, useReducer, useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { cityData } from "./data/data";
-import { Action, Area, YouBikeData } from ".";
+import { Action, Area } from ".";
 import { initialState, reducer } from "./reducer/reducer";
+import { RotateCcw } from "lucide-react";
 
 const getDataTaipei = async () => {
   const { data } = await axios(cityData[0].apiUrl);
@@ -23,7 +24,7 @@ const getDataTaipei = async () => {
 // };
 
 const App = () => {
-  const { data, refetch } = useQuery({
+  const { data, refetch, isLoading } = useQuery({
     queryKey: ["Taipei"],
     queryFn: getDataTaipei,
   });
@@ -67,17 +68,20 @@ const App = () => {
     // });
   }, [data]);
 
-  // useEffect(() => {
-  //   console.log(state.paginatedData);
-  // });
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <>
       <Header />
       <hr />
       <main className="flex flex-col justify-center w-full gap-5 px-6 py-5 md:px-24">
-        <div>
-          <p className="text-[#B5CC22] text-2xl">站點資訊</p>
+        <div className="flex gap-3">
+          <p className="text-2xl text-youbikeGreen">站點資訊</p>
+          {/* <button disabled={isLoading || disabled} onClick={() => {}}>
+            <RotateCcw color="#677510" />
+          </button> */}
         </div>
         <div className="flex flex-col-reverse gap-3 md:flex-row">
           <Dropdown dispatch={dispatch} />
@@ -93,7 +97,9 @@ const App = () => {
             height={172}
           />
         </div>
-        <DataTable data={data} state={state} dispatch={dispatch} />
+        <div className="max-h-screen overflow-auto">
+          <DataTable data={data} state={state} />
+        </div>
       </main>
     </>
   );

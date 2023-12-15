@@ -19,7 +19,7 @@ export default function Dropdown({ dispatch }: { dispatch: Dispatch<Action> }) {
           dispatch({ type: "CHANGE_CITY", payload: { city: cityData[+value] } })
         }
       >
-        <SelectTrigger className="w-full md:w-[143px] rounded-md bg-[#F6F6F6]">
+        <SelectTrigger className="w-full md:w-[143px] rounded-md bg-youbikeWhite">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

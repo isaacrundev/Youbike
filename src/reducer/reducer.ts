@@ -6,8 +6,7 @@ export const initialState: State = {
     areas: [],
   },
   keywords: "",
-  page: { current: 1, total: 1 },
-  paginatedData: [],
+  page: { currentPage: 1, countPerPage: 30 },
 };
 
 export const reducer = (state: State, action: Action) => {
@@ -34,21 +33,17 @@ export const reducer = (state: State, action: Action) => {
       };
     case "FILTER_BY_KEYWORDS":
       return { ...state, keywords: action.payload.keywords };
-    case "CURRENT_PAGE_UPDATE":
+    case "UPDATE_CURRENT_PAGE":
       return {
         ...state,
-        page: { ...state.page, current: action.payload.current },
+        page: { ...state.page, currentPage: action.payload.currentPage },
       };
-    case "TOTAL_PAGE_UPDATE":
+    case "UPDATE_COUNT_PER_PAGE":
       return {
         ...state,
-        page: { ...state.page, total: action.payload.total },
+        page: { ...state.page, countPerPage: action.payload.countPerPage },
       };
-    case "SET_PAGINATED_DATA":
-      return {
-        ...state,
-        paginatedData: action.payload.paginatedData,
-      };
+
     default:
       return state;
   }

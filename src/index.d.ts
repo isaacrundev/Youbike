@@ -17,8 +17,7 @@ type Area = { name: string; nameCn: string; checked: boolean };
 type State = {
   category: { city: CityData; areas: Area[] };
   keywords: string;
-  page: { current: number; total: number };
-  paginatedData: YouBikeData[][];
+  page: { currentPage: number; countPerPage: number };
 };
 
 type Action =
@@ -26,8 +25,7 @@ type Action =
   | { type: "SET_AREA_CHECKBOXES"; payload: { areas: Area[] } }
   | { type: "CHANGE_AREA_CHECKBOX"; payload: { each: Area } }
   | { type: "FILTER_BY_KEYWORDS"; payload: { keywords: string } }
-  | { type: "CURRENT_PAGE_UPDATE"; payload: { current: number } }
-  | { type: "TOTAL_PAGE_UPDATE"; payload: { total: number } }
-  | { type: "SET_PAGINATED_DATA"; payload: { paginatedData: YouBikeData[][] } };
+  | { type: "UPDATE_CURRENT_PAGE"; payload: { currentPage: number } }
+  | { type: "UPDATE_COUNT_PER_PAGE"; payload: { countPerPage: number } };
 
 export { CityData, YouBikeData, State, Area, Action };

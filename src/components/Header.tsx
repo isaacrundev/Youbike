@@ -16,7 +16,7 @@ export default function Header() {
     <header className="relative">
       {toggle ? <MobileMenu handleClick={handleClick} /> : null}
       <nav className="flex justify-center">
-        <div className="flex justify-between w-full px-6 md:gap-64 md:px-24">
+        <div className="flex justify-between w-full px-6 md:gap-64 md:px-24 ">
           <div className="flex gap-10 w-65 h-65 md:w-95 md:h-95">
             <img alt="Youbike_logo" src={logo} width={95} height={95} />
             <div className="hidden gap-10 md:flex">
@@ -24,7 +24,9 @@ export default function Header() {
                 <div className="flex items-center" key={v4()}>
                   <p
                     className={`${
-                      i === "站點資訊" ? `text-[#B5CC22]` : `text-[#677510]`
+                      i === "站點資訊"
+                        ? `text-youbikeGreen`
+                        : `text-youbikeFocus`
                     }`}
                   >
                     {i}
@@ -34,7 +36,7 @@ export default function Header() {
             </div>
           </div>
           <div className="items-center hidden md:flex">
-            <button className="bg-[#B5CC22] w-[85px] h-[40px] rounded-3xl text-white">
+            <button className="bg-youbikeGreen w-[85px] h-[40px] rounded-3xl text-white">
               登入
             </button>
           </div>
@@ -58,7 +60,7 @@ export const MobileMenu = ({ handleClick }: { handleClick: () => void }) => {
           <img alt="closeIcon" src={hbgMenu} width={24} height={24} />
         </div>
       </div>
-      <div className="bg-[#B5CC22] h-full">
+      <div className="h-full bg-youbikeGreen">
         {/* <div className="flex flex-col gap-8 pt-8 pl-5"> */}
         <div className="flex flex-col justify-between h-full py-8 pl-5">
           <div className="flex flex-col gap-8">
@@ -66,7 +68,7 @@ export const MobileMenu = ({ handleClick }: { handleClick: () => void }) => {
               <div className="flex items-center" key={v4()}>
                 <p
                   className={`${
-                    i === "站點資訊" ? `text-[#677510]` : `text-white`
+                    i === "站點資訊" ? `text-youbikeFocus` : `text-white`
                   }`}
                 >
                   {i}
@@ -76,7 +78,7 @@ export const MobileMenu = ({ handleClick }: { handleClick: () => void }) => {
             {/* </div> */}
           </div>
           <div className="items-center">
-            <button className="bg-white w-[81px] h-[40px] rounded-[100px] text-[#B5CC22]">
+            <button className="bg-white w-[81px] h-[40px] rounded-[100px] text-youbikeGreen">
               登入
             </button>
           </div>

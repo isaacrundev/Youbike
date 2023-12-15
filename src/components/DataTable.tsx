@@ -2,38 +2,63 @@ import { v4 } from "uuid";
 import {
   Table,
   TableBody,
-  TableCaption,
+  // TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "./ui/table";
-import { Action, State, YouBikeData } from "..";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Dispatch } from "react";
+import { State, YouBikeData } from "..";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { Dispatch } from "react";
 
 export default function DataTable({
   data,
   state,
-  dispatch,
-}: {
+}: // dispatch,
+{
   data: YouBikeData[];
   state: State;
-  dispatch: Dispatch<Action>;
+  // dispatch: Dispatch<Action>;
 }) {
-  // const handleClickPrev = () => {};
+  // const handleClickPrev = () => {
+  //   if (state.page.currentPage > 0) {
+  //     dispatch({
+  //       type: "UPDATE_CURRENT_PAGE",
+  //       payload: { currentPage: state.page.currentPage },
+  //     });
+  //   }
+  // };
+  // const handleClickNext = () => {
+  //   if (
+  //     state.page.currentPage < Math.round(data.length / state.page.countPerPage)
+  //   ) {
+  //     dispatch({
+  //       type: "UPDATE_CURRENT_PAGE",
+  //       payload: { currentPage: state.page.currentPage },
+  //     });
+  //   }
+  // };
+
   return (
     <>
       <Table>
-        <TableCaption>
-          {/* <button onClick={handleClickPrev}>
-            <ChevronLeft />
+        {/* <TableCaption className="space-x-8">
+          <button
+            className="w-20 h-10 rounded-sm bg-youbikeGreen"
+            onClick={handleClickPrev}
+          >
+            <ChevronLeft className="mx-auto" />
           </button>
-          <button onClick={handleClickNext}>
-            <ChevronRight />
-          </button> */}
-        </TableCaption>
-        <TableHeader className=" bg-[#B5CC22]">
+          <button
+            className="w-20 h-10 rounded-sm bg-youbikeGreen "
+            onClick={handleClickNext}
+          >
+            <ChevronRight className="mx-auto" />
+          </button>
+        </TableCaption> */}
+        {/* <TableHeader className=" bg-youbikeGreen"> */}
+        <TableHeader className=" bg-youbikeGreen">
           <TableRow>
             <TableHead className="text-white">縣市</TableHead>
             <TableHead className="text-white">區域</TableHead>
@@ -51,13 +76,17 @@ export default function DataTable({
                 )
               )
               .filter((i) => i.ar.includes(state.keywords))
+              // .slice(
+              //   state.page.currentPage,
+              //   state.page.currentPage + state.page.countPerPage
+              // )
               .map((i) => (
                 <TableRow key={v4()}>
                   <TableCell>{state.category.city.nameCn}</TableCell>
                   <TableCell>{i.sarea}</TableCell>
                   <TableCell>{i.ar}</TableCell>
-                  <TableCell className="text-[#B5CC22]">{i.sbi}</TableCell>
-                  <TableCell className="text-[#B5CC22]">{i.bemp}</TableCell>
+                  <TableCell className="text-youbikeGreen">{i.sbi}</TableCell>
+                  <TableCell className="text-youbikeGreen">{i.bemp}</TableCell>
                 </TableRow>
               ))
           ) : (
@@ -65,8 +94,8 @@ export default function DataTable({
               <TableCell>No Data</TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
-              <TableCell className="text-[#B5CC22]"></TableCell>
-              <TableCell className="text-[#B5CC22]"></TableCell>
+              <TableCell className="text-youbikeGreen"></TableCell>
+              <TableCell className="text-youbikeGreen"></TableCell>
             </TableRow>
           )}
           {/* {data ? (
@@ -82,8 +111,8 @@ export default function DataTable({
                   <TableCell>{state.category.city.nameCn}</TableCell>
                   <TableCell>{i.sarea}</TableCell>
                   <TableCell>{i.ar}</TableCell>
-                  <TableCell className="text-[#B5CC22]">{i.sbi}</TableCell>
-                  <TableCell className="text-[#B5CC22]">{i.bemp}</TableCell>
+                  <TableCell className="text-youbikeGreen">{i.sbi}</TableCell>
+                  <TableCell className="text-youbikeGreen">{i.bemp}</TableCell>
                 </TableRow>
               ))
           ) : (
@@ -91,8 +120,8 @@ export default function DataTable({
               <TableCell>No Data</TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
-              <TableCell className="text-[#B5CC22]"></TableCell>
-              <TableCell className="text-[#B5CC22]"></TableCell>
+              <TableCell className="text-youbikeGreen"></TableCell>
+              <TableCell className="text-youbikeGreen"></TableCell>
             </TableRow>
           )} */}
         </TableBody>

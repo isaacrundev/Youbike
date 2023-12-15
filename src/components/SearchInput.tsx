@@ -19,11 +19,11 @@ export default function SearchInput({
   };
   return (
     <div className="relative">
-      <div className="w-full md:max-w-[277px] bg-[#F6F6F6] rounded-md flex relative">
+      <div className="w-full md:max-w-[277px] bg-youbikeWhite rounded-md flex relative">
         <Input
           onChange={handleInputChange}
           type="text"
-          className="bg-[#F6F6F6]"
+          className="bg-youbikeWhite"
           placeholder="搜尋站點"
           value={keywordsValue}
         />
