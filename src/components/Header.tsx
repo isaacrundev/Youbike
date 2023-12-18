@@ -3,6 +3,7 @@ import logo from "../assets/youbike_logo.png";
 import hbgMenu from "../assets/menu_24px.png";
 import close from "../assets/close_24px.png";
 import { v4 } from "uuid";
+import { motion } from "framer-motion";
 
 const menu = ["使用說明", "收費方式", "站點資訊", "最新消息", "活動專區"];
 
@@ -52,7 +53,12 @@ export default function Header() {
 
 export const MobileMenu = ({ handleClick }: { handleClick: () => void }) => {
   return (
-    <div className="absolute top-0 left-0 z-50 flex flex-col w-screen h-screen bg-white">
+    <motion.div
+      style={{ x: 500 }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="absolute top-0 left-0 z-50 flex flex-col w-screen h-screen bg-white"
+    >
       <div className="flex justify-between w-full px-6 mx-auto">
         <div className="flex items-center w-65 h-65">
           <img alt="youbikeLogo" src={logo} width={95} height={95} />
@@ -85,6 +91,6 @@ export const MobileMenu = ({ handleClick }: { handleClick: () => void }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
