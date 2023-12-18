@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/youbike_logo.png";
 import hbgMenu from "../assets/menu_24px.png";
+import close from "../assets/close_24px.png";
 import { v4 } from "uuid";
 
 const menu = ["使用說明", "收費方式", "站點資訊", "最新消息", "活動專區"];
@@ -57,7 +58,7 @@ export const MobileMenu = ({ handleClick }: { handleClick: () => void }) => {
           <img alt="youbikeLogo" src={logo} width={95} height={95} />
         </div>
         <div className="flex items-center" onClick={handleClick}>
-          <img alt="closeIcon" src={hbgMenu} width={24} height={24} />
+          <img alt="closeIcon" src={close} width={24} height={24} />
         </div>
       </div>
       <div className="h-full bg-youbikeGreen">
